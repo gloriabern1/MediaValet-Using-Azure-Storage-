@@ -1,9 +1,7 @@
-﻿using ConsoleApp1.Services;
-using Microsoft.WindowsAzure;
-using Microsoft.WindowsAzure.StorageClient;
+﻿using OrderConsole.Services;
 using System;
 
-namespace ConsoleApp1
+namespace OrderConsole
 {
     public class Program
     {
@@ -17,7 +15,7 @@ namespace ConsoleApp1
             Console.WriteLine($"I’m agent {AgentId}, my magic number is {MagicNumber}");
 
             OrderService orderService = new OrderService(AgentId, MagicNumber);
-            orderService.ProcessOrder().ConfigureAwait(false);
+            orderService.ProcessAndSaveOrder().ConfigureAwait(false);
             
             Console.WriteLine("Done Processing Orders in queue");
             Console.ReadKey();

@@ -16,9 +16,8 @@ namespace AzureStorageServices.Entities
 
         private readonly IQueueService queueService = new QueueService();
 
-        public Orders(int orderId, string orderText)
+        public Orders( string orderText)
         {
-            this.OrderId = orderId;
             this.OrderText = orderText;
             this.RandomNumber = new Random().Next(1, 10);
         }

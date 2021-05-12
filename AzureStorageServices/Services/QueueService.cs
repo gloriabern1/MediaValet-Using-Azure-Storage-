@@ -18,7 +18,6 @@ namespace AzureStorageServices.Services
         private readonly QueueClient queueClient;
         public QueueService()
         {
-            //var cloudstorageaccount = CloudStorageAccount.DevelopmentStorageAccount
             storageAccountConnString = ConfigurationManager.AppSettings["DefaultConnection"];
             // cloudStorageAccount = CloudStorageAccount.Parse(storageAccountConnString);
             queueName = ConfigurationManager.AppSettings["QueueName"];
@@ -30,7 +29,8 @@ namespace AzureStorageServices.Services
         {
             try
             {
-
+                UniqueIdGenerator uniqueIdGenerator = new UniqueIdGenerator(2, 5);
+                orders.OrderId = int.Parse(uniqueIdGenerator.NextId().ToString());
                 queueClient.CreateIfNotExists();
                 await queueClient.SendMessageAsync(JsonConvert.SerializeObject(orders), default, TimeSpan.FromSeconds(-1), default);
 

@@ -24,7 +24,7 @@ namespace SupervisorAPI.Models
             {
                 return BadRequest();
             }
-            Orders orders = new Orders(order.OrderId, order.OrderText);
+            Orders orders = new Orders( order.OrderText);
 
             bool result = await orders.ProcessOrder();
             Console.WriteLine($"Send order {orders.OrderId} with random number {orders.RandomNumber}");

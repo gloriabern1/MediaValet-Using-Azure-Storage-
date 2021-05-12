@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace ConsoleApp1.Services
+namespace OrderConsole.Services
 {
     public class OrderService
     {
@@ -25,7 +25,7 @@ namespace ConsoleApp1.Services
             this.MagicNumber = magicNumber;
         }
 
-        public async Task ProcessOrder()
+        public async Task ProcessAndSaveOrder()
         {
             QueueMessage[] queueMessages = await _queueService.ReadOrderFromQueue();
             if (queueMessages != null)
@@ -38,7 +38,7 @@ namespace ConsoleApp1.Services
                     if (orders.RandomNumber == MagicNumber)
                     {
                         Console.WriteLine("Oh no, my magic number was found");
-                        Console.ReadLine();
+                        Console.ReadKey();
                         continue;
                     }
                     else
