@@ -18,6 +18,8 @@ Project is created with:
 To run this project, Open it on Visual studio And run the Supervisor API Project. Then Create new Orders using the Post Order Url:"https://localhost:portnumber/api/order", using post man or any other software. After posting as many orders as you want. Then run the "Orderconsole" Application. Which will pick the posted orders from the queue and process them. When its done processing the order. The Message indicating it is done, will be displayed on the consele. 
 To see all processed order, call the Get orders URL: "https://localhost:portnumber/api/order" on post man, and all processed orders will be returned.  It was not stated in the specification file, Console application would be a web job, So I did not make it one.
 
+Successfully posted orders will return httpstatus code 200.
+
 
 
 
