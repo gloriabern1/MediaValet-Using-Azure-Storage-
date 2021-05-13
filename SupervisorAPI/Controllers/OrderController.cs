@@ -15,9 +15,11 @@ namespace SupervisorAPI.Models
         private readonly ITableService _tableService;
         public OrderController()
         {
+            // Would use dependency Injection is real projects
             _tableService = new TableService();
         }
 
+        // POST api/order
         public async Task<IHttpActionResult> PostOrder([System.Web.Http.FromBody]OrderDto order)
         {
             if (!ModelState.IsValid)
@@ -30,9 +32,11 @@ namespace SupervisorAPI.Models
             Console.WriteLine($"Send order {orders.OrderId} with random number {orders.RandomNumber}");
 
             if (result) return Ok();
+
             return Conflict();
         }
 
+        // GET api/order
         public async Task<IEnumerable<ConfirmationDTO>> GetOrderConfirmation()
         {
             IEnumerable<ConfirmationDTO> confirmationDTO = new List<ConfirmationDTO>();

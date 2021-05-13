@@ -54,7 +54,6 @@ namespace OrderConsole.Services
             else
             {
                 Console.WriteLine("No Order to be processed from the queue");
-                Console.ReadLine();
 
             }
 

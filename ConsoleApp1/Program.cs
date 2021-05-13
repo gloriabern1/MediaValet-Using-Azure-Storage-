@@ -17,7 +17,6 @@ namespace OrderConsole
             OrderService orderService = new OrderService(AgentId, MagicNumber);
             orderService.ProcessAndSaveOrder().ConfigureAwait(false);
             
-            Console.WriteLine("Done Processing Orders in queue");
             Console.ReadKey();
 
         }

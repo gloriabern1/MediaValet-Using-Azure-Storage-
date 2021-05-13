@@ -8,12 +8,14 @@ using System.Threading.Tasks;
 
 namespace AzureStorageServices.Entities
 {
+    //Orders Entity
     public class Orders
     {
         public int OrderId { get; set; }
         public int RandomNumber { get; set; }
         public string OrderText { get; set; }
 
+        //Should be done with dependency Injection for better performance
         private readonly IQueueService queueService = new QueueService();
 
         public Orders( string orderText)

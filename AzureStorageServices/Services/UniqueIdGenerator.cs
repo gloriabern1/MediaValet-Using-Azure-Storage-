@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AzureStorageServices.Services
 {
-
+    //Used for getting incremental orderIds
     public class UniqueIdGenerator
     {
         private readonly object _padLock = new object();

@@ -13,13 +13,11 @@ namespace AzureStorageServices.Services
     {
 
         private readonly string storageAccountConnString;
-        // private readonly CloudStorageAccount cloudStorageAccount;
         private readonly string queueName;
         private readonly QueueClient queueClient;
         public QueueService()
         {
             storageAccountConnString = ConfigurationManager.AppSettings["DefaultConnection"];
-            // cloudStorageAccount = CloudStorageAccount.Parse(storageAccountConnString);
             queueName = ConfigurationManager.AppSettings["QueueName"];
             queueClient = new QueueClient(storageAccountConnString, queueName);
 
@@ -47,6 +45,7 @@ namespace AzureStorageServices.Services
 
         }
 
+        //Get order from queue
         public async Task<QueueMessage[]> ReadOrderFromQueue()
         {
             try
@@ -59,6 +58,7 @@ namespace AzureStorageServices.Services
 
                     if (properties.ApproximateMessagesCount > 0)
                     {
+                        //Set the number to get per call 10 orders
                         QueueMessage[] Messages = queueClient.ReceiveMessages(10);
                         return Messages;
 
@@ -78,6 +78,7 @@ namespace AzureStorageServices.Services
 
         }
 
+        //Delete order from queue
         public async Task DeleteOrderFromQueue(QueueMessage queueMessage)
         {
             try
